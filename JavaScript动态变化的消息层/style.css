@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    margin: 0px;
+    font-family: "Poppins", serif;
+    background: #EFEFEE;
+}
+.container{
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+    margin: 0px auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.update_box{
+    position: relative;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0px auto;
+    background: #000;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 10.5px #979796;
+    transition: all .3s linear;
+}
+.update_box.done{
+    background: #3BB22B;
+    width: 260px;
+}
+.update_box.active{
+    transform: translateY(100px);
+    opacity: 0;
+}
+.update_box.done .loading{
+    display: none;
+}
+.loading{
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.update_box.done .profile_box{
+    display: flex;
+}
+.loader{
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-left: 2px solid #fff;
+    border-radius: 50%;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    margin-right: 20px;
+    animation: loader 1500ms linear infinite;
+}
+.update_box.active .loader{
+    animation: unset;
+}
+h2{
+    position: relative;
+    margin: 0px;
+    text-align: center;
+    font-size: 22px;
+}
+@keyframes loader{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.profile_box{
+    max-width: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+}
+.tick{
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.tick::after,.tick::before{
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 2px;
+    background: #3BB22B;
+    transform: rotate(30deg);
+    left: 4px;
+    top: 11px;
+}
+.tick::before{
+    width: 10px;
+    transform: rotate(-47deg);
+    left: 6px;
+    top: 9px;
+}
+.close_icon{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.close_icon::after,.close_icon::before{
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 18px;
+    background: #85DB77;
+    transform: rotate(45deg);
+}
+.close_icon::before{
+    transform: rotate(-45deg);
+}
+.profile_box h2{
+    max-width: calc(100% - 30px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

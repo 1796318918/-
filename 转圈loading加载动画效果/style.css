@@ -1,0 +1,210 @@
+.loading {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  opacity: 1;
+  transition: opacity .5s ease;
+  z-index: 9999;
+}
+
+.loading__inner {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: #b1ecec;
+  overflow: hidden;
+}
+
+/* 背景色のグラデーションアニメーション（青→白） */
+.loading__inner::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(
+    circle at 100% 0%,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,.75) 22%,
+    rgba(255,255,255,.35) 42%,
+    rgba(255,255,255,0) 65%
+  );
+  transform-origin: 100% 0%;
+  transform: scale(0.35);
+  opacity: 0;
+  z-index:0;
+  pointer-events:none;
+  animation: wash 3.6s ease-out forwards;
+}
+
+@keyframes wash {
+  to {
+    transform: scale(2.6);
+    opacity: 1;
+  }
+}
+/* 背景色のグラデーションアニメーション（青→白） end */
+
+.loading__contents {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+}
+
+/* ローダーの色がくるくる回るアニメーション */
+.loading__loader {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin-inline: auto;
+
+  --dur: 1.5s;
+  --dir: 1;
+  --c-red:   #a21f2d;
+  --c-teal1: #008ca5;
+  --c-teal2: rgba(0,140,165,.75);
+  --c-teal3: rgba(0,140,165,.50);
+  --c-gray1: rgba(165,165,165,.85);
+  --c-gray2: rgba(165,165,165,.55);
+  --c-gray3: rgba(165,165,165,.28);
+}
+
+.loading__bar {
+  stroke-width: 5px;
+  stroke-miterlimit: 10;
+  fill: var(--c-gray3);
+  stroke: var(--c-gray3);
+  animation: colorCycle var(--dur) linear infinite;
+  animation-delay: calc((var(--dur) / 12) * (var(--i) + 0.001) * var(--dir));
+}
+
+@keyframes colorCycle {
+  0%, 100% {
+    fill: var(--c-gray3);
+    stroke: var(--c-gray3);
+  }
+  0.0001%,  8.3333% {
+    fill: var(--c-red);
+    stroke: var(--c-red);
+  }
+  8.3334%, 16.6666% {
+    fill: var(--c-teal1);
+    stroke: var(--c-teal1);
+  }
+  16.6667%, 25% {
+    fill: var(--c-teal2);
+    stroke: var(--c-teal2);
+  }
+  25.0001%, 33.3333% {
+    fill: var(--c-teal3);
+    stroke: var(--c-teal3);
+  }
+  33.3334%, 41.6666% {
+    fill: var(--c-gray1);
+    stroke: var(--c-gray1);
+  }
+  41.6667%, 50% {
+    fill: var(--c-gray2);
+    stroke: var(--c-gray2);
+  }
+  50.0001%, 99.9999% {
+    fill: var(--c-gray3);
+    stroke: var(--c-gray3);
+  }
+}
+/* ローダーの色がくるくる回るアニメーション end */
+
+/* テキストが上下にバウンドするアニメーション */
+.loading__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 23px;
+  color: #008ca5;
+  font-family: "M PLUS 1", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.loading__text span {
+  animation-name: bounce;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.loading__text span:nth-child(2) {
+  animation-delay: .1s;	
+}
+.loading__text span:nth-child(3) {
+  animation-delay: .2s;
+}
+.loading__text span:nth-child(4) {
+  animation-delay: .3s;	
+}
+.loading__text span:nth-child(5) {
+  animation-delay: .4s;
+}
+.loading__text span:nth-child(6) {
+  animation-delay: .5s;	
+}
+.loading__text span:nth-child(7) {
+  animation-delay: .6s;
+}
+.loading__text span:nth-child(8) {
+  animation-delay: .7s;
+}
+.loading__text span:nth-child(9) {
+  animation-delay: .8s;
+}
+.loading__text span:nth-child(10) {
+  animation-delay: .9s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0px)
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  80%,
+  100% {
+    transform: translateY(0px);
+  }
+}
+/* テキストが上下にバウンドするアニメーション end */
+
+/* ローディングアニメーションからロゴに切り替わる */
+.loading__main {
+  opacity: 1;
+  transition: opacity .75s ease;
+}
+
+.loading.is-fadeout .loading__main {
+  opacity: 0;
+}
+
+.loading.is-hide-main .loading__main {
+  display: none;
+}
+
+.loading__logo {
+  display: block;
+  width: min(560px, 82vw);
+  height: auto;
+
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+.loading.is-show-next .loading__logo {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transition:
+    clip-path 1s ease,
+    opacity .5s ease;
+}
+/* ローディングアニメーションからロゴに切り替わる end */

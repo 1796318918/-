@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生成绩分析系统</title>
+    <script src="chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-chart-line"></i> 学生成绩分析系统</h1>
+            <p class="subtitle">2023年上学期期末考试成绩综合分析报告</p>
+        </header>
+        
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">平均分</div>
+                    <div class="card-icon grade-0"><i class="fas fa-calculator"></i></div>
+                </div>
+                <div class="card-content">82.6</div>
+                <div class="card-description">较上学期 +3.5分 ↑</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">及格率</div>
+                    <div class="card-icon grade-1"><i class="fas fa-check-circle"></i></div>
+                </div>
+                <div class="card-content">94.3%</div>
+                <div class="card-description">较上学期 +2.1% ↑</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">优秀率</div>
+                    <div class="card-icon grade-2"><i class="fas fa-star"></i></div>
+                </div>
+                <div class="card-content">35.7%</div>
+                <div class="card-description">较上学期 +5.2% ↑</div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">最高分</div>
+                    <div class="card-icon grade-3"><i class="fas fa-trophy"></i></div>
+                </div>
+                <div class="card-content">98.5</div>
+                <div class="card-description">高三(2)班 张明</div>
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-bar"></i> 各科目平均分对比</h3>
+                <div class="chart-container">
+                    <canvas id="subjectScoresChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-pie"></i> 成绩分布</h3>
+                <div class="chart-container">
+                    <canvas id="scoreDistributionChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-line"></i> 班级平均分趋势</h3>
+                <div class="chart-container">
+                    <canvas id="classTrendChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3 class="chart-title"><i class="fas fa-chart-area"></i> 各科目最高分与最低分</h3>
+                <div class="chart-container">
+                    <canvas id="highLowChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detailed-analysis">
+            <h3 class="analysis-title"><i class="fas fa-analytics"></i> 详细分析</h3>
+            <div class="analysis-content">
+                <p>本次期末考试共有586名学生参加，涵盖语文、数学、英语、物理、化学和生物六个科目。总体成绩较上学期有显著提升，平均分提高了3.5分，优秀率和及格率均有增长。</p>
+                
+                <p>从各科目表现来看，数学和英语的平均分较高，分别为85.2和86.7分，而物理科目平均分相对较低，为78.9分，需要重点关注。语文科目成绩分布较为均匀，高分段学生较多。</p>
+                
+                <div class="key-findings">
+                    <h4>关键发现</h4>
+                    <ul>
+                        <li>数学科目优秀率最高，达到42.3%，显示出良好的教学效果</li>
+                        <li>物理科目及格率较低(88.5%)，需要加强基础知识的教学</li>
+                        <li>高三(2)班整体表现最佳，平均分87.3分，连续两个学期领先</li>
+                        <li>成绩分布呈现正态分布，中间分段学生占65.2%，符合预期</li>
+                    </ul>
+                </div>
+                
+                <p>建议下一阶段教学中，重点关注物理科目的教学方法改进，加强对中等水平学生的提升训练，同时继续保持数学和英语科目的教学优势。对于成绩较低的学生，建议实施个性化辅导计划。</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 学生成绩分析系统 | 生成时间: 2023年7月15日</p>
+        </footer>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>

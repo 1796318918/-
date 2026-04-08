@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Select Menu</title>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Select Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!-- Floating Particles -->
+<div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+<div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+<div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+<div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+<div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+<div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+<div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+<div class="particle" style="left: 80%; animation-delay: 3.5s;"></div>
+<div class="particle" style="left: 90%; animation-delay: 4.5s;"></div>
+
+<div class="container">
+  
+  <div class="custom-select">
+    <!-- Select Trigger -->
+    <div class="select-trigger">
+      <div class="selected-option">
+        <i class="fas fa-palette"></i>
+        <span>选择你喜欢的...</span>
+      </div>
+      <i class="fas fa-chevron-down arrow"></i>
+    </div>
+
+    <!-- Dropdown -->
+    <div class="dropdown">
+      <!-- Search Box -->
+      <div class="search-box">
+        <input type="text" placeholder="Search options..." id="searchInput">
+        <i class="fas fa-search"></i>
+      </div>
+
+      <!-- Options Container -->
+      <div class="options-container">
+        <div class="option" data-value="design" data-icon="fa-palette">
+          <i class="fas fa-palette" style="color: #f43f5e;"></i>
+          <span>Design & Creativity</span>
+        </div>
+        <div class="option" data-value="code" data-icon="fa-code">
+          <i class="fas fa-code" style="color: #3b82f6;"></i>
+          <span>Code & Development</span>
+        </div>
+        <div class="option" data-value="rocket" data-icon="fa-rocket">
+          <i class="fas fa-rocket" style="color: #8b5cf6;"></i>
+          <span>Launch & Deploy</span>
+        </div>
+        <div class="option" data-value="heart" data-icon="fa-heart">
+          <i class="fas fa-heart" style="color: #ec4899;"></i>
+          <span>Love & Passion</span>
+        </div>
+        <div class="option" data-value="star" data-icon="fa-star">
+          <i class="fas fa-star" style="color: #fbbf24;"></i>
+          <span>Premium Quality</span>
+        </div>
+        <div class="option" data-value="fire" data-icon="fa-fire">
+          <i class="fas fa-fire" style="color: #f97316;"></i>
+          <span>Hot & Trending</span>
+        </div>
+        <div class="option" data-value="crown" data-icon="fa-crown">
+          <i class="fas fa-crown" style="color: #eab308;"></i>
+          <span>Premium Elite</span>
+        </div>
+        <div class="option" data-value="gem" data-icon="fa-gem">
+          <i class="fas fa-gem" style="color: #06b6d4;"></i>
+          <span>Precious Gems</span>
+        </div>
+        <div class="option" data-value="bolt" data-icon="fa-bolt">
+          <i class="fas fa-bolt" style="color: #eab308;"></i>
+          <span>Lightning Fast</span>
+        </div>
+        <div class="option" data-value="music" data-icon="fa-music">
+          <i class="fas fa-music" style="color: #a855f7;"></i>
+          <span>Music & Sound</span>
+        </div>
+        <div class="option" data-value="camera" data-icon="fa-camera">
+          <i class="fas fa-camera" style="color: #14b8a6;"></i>
+          <span>Photo & Video</span>
+        </div>
+        <div class="option" data-value="gamepad" data-icon="fa-gamepad">
+          <i class="fas fa-gamepad" style="color: #6366f1;"></i>
+          <span>Gaming Zone</span>
+        </div>
+        <div class="option" data-value="coffee" data-icon="fa-coffee">
+          <i class="fas fa-coffee" style="color: #92400e;"></i>
+          <span>Coffee & Chill</span>
+        </div>
+        <div class="option" data-value="plane" data-icon="fa-plane">
+          <i class="fas fa-plane" style="color: #0ea5e9;"></i>
+          <span>Travel & Adventure</span>
+        </div>
+        <div class="option" data-value="shield" data-icon="fa-shield-alt">
+          <i class="fas fa-shield-alt" style="color: #10b981;"></i>
+          <span>Security & Protection</span>
+        </div>
+      </div>
+
+      <!-- No Results Message -->
+      <div class="no-results">
+        <i class="fas fa-search"></i>
+        <p>No results found!</p>
+      </div>
+    </div>
+  </div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>

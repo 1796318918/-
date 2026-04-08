@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery圆形进度条插件 www.bootstrapmb.com</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            box-sizing: border-box;
+        }
+
+        .main {
+            padding-top: 80px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-top: 80px;
+            margin: 0 auto;
+        }
+
+        .demost1,
+        .demost2 {
+            margin-bottom: 94px;
+        }
+
+        .demost1 {
+            width: 300px !important;
+            height: 300px !important;
+        }
+
+        .demost1 .percentage {
+            width: 260px !important;
+            height: 260px !important;
+        }
+
+        .demost2 {
+            width: 500px !important;
+            height: 500px !important;
+        }
+
+        .demost2 .percentage {
+            width: 420px !important;
+            height: 420px !important;
+        }
+    </style>
+    <!-- 组件样式 -->
+    <style>
+        .panClip {
+            width: 400px;
+            height: 400px;
+            background-color: #ccc;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panClip .percentage {
+            width: 280px;
+            height: 280px;
+            font-size: 32px;
+            color: #333;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 5;
+        }
+
+        .panClip .clipBox {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;
+            clip-path: polygon(50% 0%, 50% 100%, 100% 100%, 100% 0%);
+        }
+
+        .panClip .clipBox .clipLeft,
+        .panClip .clipBox .clipRight {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #0bd35b;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+
+        .panClip .clipBox .clipLeft {
+            clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0%);
+        }
+
+        .panClip .clipBox .clipRight {
+            clip-path: polygon(50% 0%, 50% 100%, 100% 100%, 100% 0%);
+        }
+
+        .width-none {
+            width: 0 !important;
+        }
+
+        .clip_none {
+            clip-path: none !important;
+        }
+
+        .panClip .circular {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #0bd35b;
+            transform: translateX(-50%);
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            z-index: 3;
+        }
+
+        .panClip .corest {
+            width: 100%;
+            height: 100%;
+            transition: transform 2s;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+      
+        <div class="box">
+            <div class="panClip demost1">
+                <div class="clipBox">
+                    <div class="clipLeft"></div>
+                    <div class="clipRight width-none"></div>
+                </div>
+                <div class="percentage">0%</div>
+                <div class="circular"></div>
+                <div class="corest">
+                    <div class="circular"></div>
+                </div>
+            </div>
+            <div class="panClip demost2">
+                <div class="clipBox">
+                    <div class="clipLeft"></div>
+                    <div class="clipRight width-none"></div>
+                </div>
+                <div class="percentage">0%</div>
+                <div class="circular"></div>
+                <div class="corest">
+                    <div class="circular"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script>
+        let demost1 = $('.demost1').eq(0);  //获取自定义类名
+        let demost2 = $('.demost2').eq(0);
+        setTimeout(() => {
+            panClip(demost1, 45, 'red');
+            panClip(demost2, 80);
+        }, 500);
+        function panClip(el, percentagest = 0, colort = '#0bd35b', callback) {
+            let clipst = el.children('.clipBox'),
+                circular = el.find('.circular'),
+                percentage = el.children('.percentage'),
+                corest = el.children('.corest'),
+                clipLeft = clipst.children('.clipLeft'),
+                clipRight = clipst.children('.clipRight');
+            let sizet = (el.width() - percentage.width()) / 2 + 'px';
+            clipLeft.css('background-color', colort);
+            circular.css({ width: sizet, height: sizet, 'background-color': colort });
+            if (percentagest >= 100) {
+                percentagest = 0;
+                clipRight.addClass("width-none");
+                clipst.removeClass("clip_none");
+            } else if (percentagest > 50) {
+                setTimeout(() => {
+                    clipRight.removeClass("width-none");
+                    clipst.addClass("clip_none");
+                }, 700);
+            }
+            if (percentagest > 0) circular.show();
+            clipLeft.css({ transition: '2s', transform: `rotate(${3.6 * percentagest}deg` });
+            corest.css({ transform: `rotate(${3.6 * percentagest}deg` });
+            percentage.html(`${percentagest}%`);
+            if (callback) callback();
+        }
+    </script>
+</body>
+
+</html>
